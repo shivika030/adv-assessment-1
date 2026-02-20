@@ -1,0 +1,376 @@
+# 1. Reverse an Array 
+def revarr(arr):
+  arr2=[]
+  n=len(arr)
+  for i in range (n):
+    arr2.append(arr[n-i-1])
+  return arr2
+arr=[1,2,3,4,5]
+print(revarr(arr))
+
+# 2. Find the Maximum & Minimum Element 
+def maxmin(arr):
+  max=arr[0]
+  min=arr[0]  
+  for  i in arr:
+    if i>max:
+      max=i
+    if i<min:
+      min=i
+  return min,max
+arr=[4,5,6,7,8,3]
+print(maxmin(arr))    
+
+# 3. Find the Sum of Elements 
+def sumofarr(arr):
+  n=len(arr)
+  sum=0
+  for i in range(n):
+    sum+=arr[i]
+  return sum
+arr=[4,5,6,7,8,3]
+print(sumofarr(arr))  
+
+#4. Find the Second Largest Element 
+def seclar(arr):
+  max=arr[0]
+  max2=arr[0]
+  for i in arr:
+    if i>max:
+      max2=max
+      max=i
+    elif i>max2 and i!=max2:
+      max2=1
+  return max2
+arr=[3,7,6,9,3,5,2]  
+print(seclar(arr))  
+        
+# 5. Count Frequency of Elements 
+def freq(arr):
+  dict={}
+  for i in arr:
+    dict[i]=dict.get(i,0)+1
+  return dict
+arr=[2,2,3,4,5,4,3,4,5,5,6,7]  
+print(freq(arr))     
+
+# 6. Check if Array is Sorted 
+def sortarr(arr):
+  f=1
+  n=len(arr)
+  for i in range(n-1):
+    if arr[i]<arr[i+1]:
+      pass
+    else:
+      f=0
+      break
+  if f==0:
+    print("arr is not sorted")
+  else:
+    print("arr is sorted")  
+arr=[2,5,7,8]
+sortarr(arr) 
+
+# 7. Rotate Array by k Positions: Rotate the array to the right by k positions. 
+def rotateright(arr,k):
+  arr2=[]
+  arr3=[]
+  n=len(arr)
+  for i in range (n):
+    arr2.append(arr[n-i-1])
+  for i in range (k):
+    arr3.append(arr2[k-i-1])
+  for i in range (n-k):
+    arr3.append(arr[i]) 
+  return arr3
+arr=[1,2,3,4,5]
+k=2  
+print(rotateright(arr,k)) 
+
+# 8. Find Pair with Given Sum: Find a pair of elements that adds up to a target sum. 
+def sum(arr,k):
+  for i in arr:
+    no=k-i
+    if no in arr:
+      print(i,no)
+arr=[1,2,3,4,5,6]  
+k=7
+sum(arr,k)    
+
+# 9. Remove Duplicates from Array: Remove duplicates from the array while maintaining order. 
+def dup(arr):
+  arr2=[]
+  for i in arr:
+    if i in arr2:
+      pass
+    else:
+      arr2.append(i)
+  return arr2
+arr=[1,1,2,2,1,2,3,4,3,5,6,7,7]
+print(dup(arr))    
+
+# 10. Merge Two Sorted Arrays 
+def sortarr(arr):
+  arr2=[]
+  n=len(arr)
+  for i in range (n):
+    for j in range(n-i-1):
+      if arr[j]>arr[j+1]:
+        arr[j], arr[j+1]= arr[j+1], arr[j]
+  return arr
+def mergearr(arr1,arr2):
+  arr1=sortarr(arr1)
+  arr2=sortarr(arr2)
+  return arr1+arr2
+arr1=[1,3,5,7]
+arr2=[2,4,6,8]
+print(mergearr(arr1,arr2))
+
+# 11. Remove given Element from Array 
+def remove(arr,k):
+  for i in arr:
+    if i==k:
+      arr.remove(i)
+  return arr    
+arr=[1,2,3,4,5]
+k=4
+print(remove(arr,k))
+
+# 12. Find the Missing Number: Find the missing number in an array of size n containing numbers from 1 to n. 
+def findno(arr):
+  n=1
+  for i in arr:
+    if i==n:
+      n+=1
+    else:
+      return n
+arr=[1,2,4,5]
+print(findno(arr))      
+
+# 13. Find Duplicates in an Array 
+def duplicate(arr):
+  arr2=[]
+  n=len(arr)
+  for i in range (n):
+    if arr.count(i)>1:
+        if i not in arr2:
+          arr2.append(i)
+  return arr2
+arr=[2,2,3,3,4]
+print(duplicate(arr))      
+
+# 14. Find Intersection of Two Arrays: Find the common elements between two arrays.
+
+def intersection(arr1,arr2):
+  for i in arr1:
+    if i in arr2:
+      print(i)
+arr1=[1,2,4,5] 
+arr2=[1,3,4,5] 
+intersection(arr1,arr2)    
+
+# 15. Find Union of Two Arrays: Find the unique elements present in both arrays.
+
+def union(arr1,arr2):
+  arr3=[]
+  arr4=[]
+  arr3=arr1+arr2
+  for i in arr3:
+    if i not in arr4:
+      arr4.append(i)
+  arr4.sort()    
+  return arr4
+arr1=[1,2,4,5]
+arr2=[1,3,4,5]
+print(union(arr1,arr2)) 
+
+# 16. Check if Two Arrays Are Equal: if two arrays contain the same elements 
+
+def equal(arr1,arr2):
+  n=len(arr1)
+  count=0
+  for i in arr1:
+    for j in arr2:
+      if i==j:
+        count+=1
+  if count==n:
+    print("arr1 and arr2 are equal")
+  else:
+    print("arr1 and arr2 are not equal")  
+arr1=[1,2,3,4]
+arr2=[4,5,2,1]
+equal(arr1,arr2)    
+
+# 17. Find Leaders in an Array: An element is a leader if it is greater than all the elements to its right.
+
+def leader(arr):
+  n=len(arr)
+  for i in range(n):
+    for j in range(i+1,n):
+      if arr[i]<arr[j]:
+        break
+    else:
+      print(arr[i])
+arr = [16, 17, 4, 3, 5, 2] 
+leader(arr)    
+
+# 18. Move Zeroes to End: Move all zeroes in the array to the end while maintaining the order of non-zero elements.
+
+def zero(arr):
+  arr2=[]
+  count=0
+  for i in arr:
+    if i==0:
+      count+=1
+    else:
+      arr2.append(i)
+  return arr2 + [0]*count
+arr=[0,1,0,3,12]
+print(zero(arr))  
+
+# 19. Find Subarray with Given Sum. 
+
+def sumsubarray(arr,k):
+  n=len(arr)
+  f=0
+  for i in range (n):
+    subarr=[]
+    subarr.append(arr[i])
+    for j in range (i+1,n):
+      arr[i]+=arr[j]
+      if arr[i]<k:
+        subarr.append(arr[j])
+      elif arr[i]==k:
+        subarr.append(arr[j])
+        print(subarr)  
+        f=1
+      else:
+        break  
+  if f==0:
+    print("no subarray with sum less than k")
+arr=[1,2,5,3,4,5,1,3,5,6,7,0]
+k=7
+sumsubarray(arr,k)        
+
+# 20. Rotate Array to the Left by k Positions 
+
+def rotateleft(arr,k):
+  arr2=[]
+  arr3=[]
+  n=len(arr)
+  for i in range(n):
+    arr2.append(arr[n-i-1])
+  for i in range(n-k):
+    arr3.append(arr2[n-k-i-1])
+  for i in range(k):
+    arr3.append(arr[i])
+  return arr3
+arr=[1,2,3,4,5]
+k=2
+print(rotateleft(arr,k))    
+
+# 21. Find the k-th Smallest Element: Find the k-th smallest element in an unsorted array.
+
+def smallest(arr,k):
+  arr.sort()
+  return arr[k-1]
+arr=[3,1,2,5,4]
+k=3
+print(smallest(arr,k))      
+
+# 22. Find All Subarrays 
+
+def subarr(arr):
+  n=len(arr)
+  for i in range (n):
+    arr2=[]
+    arr2.append(arr[i])
+    print(arr2)
+    for j in range(i+1,n):
+      arr2.append(arr[j])
+      print(arr2)
+arr=[1,2,3,4,5]
+subarr(arr)          
+
+# 23. Maximum Sum Subarray (Kadane's Algorithm) 
+
+def maxsubarr(arr):
+  n=len(arr)
+  sum=arr[0]
+  maxe=arr[0]
+  for i in range(n):
+    maxe=max(maxe+arr[i],arr[i])
+    sum=max(sum,maxe)
+  return sum
+arr=[-2,1,-3,4,-1,2,1,-5,4]
+print(maxsubarr(arr))            
+
+# 24. Rearrange Array Alternately: Rearrange an array such that elements alternate between the largest and smallest. 
+
+def rearrangeArr(arr):
+  arr.sort()
+  arr2=[]
+  n=len(arr)
+  for i in range(n//2):
+    arr2.append(arr[n-i-1])
+    arr2.append(arr[i])
+  if n%2==1:
+    arr2.append(arr[n//2])
+  return arr2  
+arr=[3,5,2,4,7,8,1,6,10]
+print(rearrangeArr(arr))            
+
+# 25. Find Majority Element: Find the element that appears more than n/2 times. 
+
+def majority(arr):
+  dict={}
+  for i in arr:
+    dict[i]=dict.get(i,0)+1
+  for key,val in dict.items():
+    if val>(len(arr)//2):
+      return key 
+arr=[2,2,1,1,1,1,2]
+print(majority(arr))      
+
+# 26. Find Peak Element: A peak element is greater than its neighbors. Find one such element. 
+
+def peakEle(arr):
+  n=len(arr)
+  arr2=[]
+  for i in range (n):
+    if i==n-1:
+      if arr[i]>arr[i-1]:
+        return arr[i]
+    elif arr[i-1]<arr[i]>arr[i+1]:
+      return arr[i]
+arr=[33,1,3,20,4,19,0,7]
+print(peakEle(arr))               
+
+# 27. Find the First Missing Positive: Find the smallest positive integer missing in the array. 
+
+def missingEle(arr):
+  n=arr[1]  
+  for i in arr:
+    if i==n:
+      n+=1
+    elif i>=1:
+      return n
+arr=[-2,0,1,2,3,5]
+print(missingEle(arr))  
+
+# 28. Sort an Array of 0s, 1s, and 2s: Sort an array consisting of only 0s, 1s, and 2s.
+
+def sortArray(arr):
+    count0=0
+    count1=0
+    count2=0
+    for i in arr:
+        if i==0:
+            count0+=1
+        elif i==1:
+            count1+=1
+        else:
+            count2+=1
+    return [0]*count0+[1]*count1+[2]*count2
+arr=[0,1,1,2,0,2,1,0,2]
+print(sortArray(arr)) 
