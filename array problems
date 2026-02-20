@@ -1,4 +1,5 @@
 # 1. Reverse an Array 
+
 def revarr(arr):
   arr2=[]
   n=len(arr)
@@ -9,6 +10,7 @@ arr=[1,2,3,4,5]
 print(revarr(arr))
 
 # 2. Find the Maximum & Minimum Element 
+
 def maxmin(arr):
   max=arr[0]
   min=arr[0]  
@@ -22,6 +24,7 @@ arr=[4,5,6,7,8,3]
 print(maxmin(arr))    
 
 # 3. Find the Sum of Elements 
+
 def sumofarr(arr):
   n=len(arr)
   sum=0
@@ -32,6 +35,7 @@ arr=[4,5,6,7,8,3]
 print(sumofarr(arr))  
 
 #4. Find the Second Largest Element 
+
 def seclar(arr):
   max=arr[0]
   max2=arr[0]
@@ -46,6 +50,7 @@ arr=[3,7,6,9,3,5,2]
 print(seclar(arr))  
         
 # 5. Count Frequency of Elements 
+
 def freq(arr):
   dict={}
   for i in arr:
@@ -55,6 +60,7 @@ arr=[2,2,3,4,5,4,3,4,5,5,6,7]
 print(freq(arr))     
 
 # 6. Check if Array is Sorted 
+
 def sortarr(arr):
   f=1
   n=len(arr)
@@ -72,6 +78,7 @@ arr=[2,5,7,8]
 sortarr(arr) 
 
 # 7. Rotate Array by k Positions: Rotate the array to the right by k positions. 
+
 def rotateright(arr,k):
   arr2=[]
   arr3=[]
@@ -88,6 +95,7 @@ k=2
 print(rotateright(arr,k)) 
 
 # 8. Find Pair with Given Sum: Find a pair of elements that adds up to a target sum. 
+
 def sum(arr,k):
   for i in arr:
     no=k-i
@@ -98,6 +106,7 @@ k=7
 sum(arr,k)    
 
 # 9. Remove Duplicates from Array: Remove duplicates from the array while maintaining order. 
+
 def dup(arr):
   arr2=[]
   for i in arr:
@@ -110,6 +119,7 @@ arr=[1,1,2,2,1,2,3,4,3,5,6,7,7]
 print(dup(arr))    
 
 # 10. Merge Two Sorted Arrays 
+
 def sortarr(arr):
   arr2=[]
   n=len(arr)
@@ -127,6 +137,7 @@ arr2=[2,4,6,8]
 print(mergearr(arr1,arr2))
 
 # 11. Remove given Element from Array 
+
 def remove(arr,k):
   for i in arr:
     if i==k:
@@ -137,6 +148,7 @@ k=4
 print(remove(arr,k))
 
 # 12. Find the Missing Number: Find the missing number in an array of size n containing numbers from 1 to n. 
+
 def findno(arr):
   n=1
   for i in arr:
@@ -148,6 +160,7 @@ arr=[1,2,4,5]
 print(findno(arr))      
 
 # 13. Find Duplicates in an Array 
+
 def duplicate(arr):
   arr2=[]
   n=len(arr)
@@ -361,16 +374,96 @@ print(missingEle(arr))
 # 28. Sort an Array of 0s, 1s, and 2s: Sort an array consisting of only 0s, 1s, and 2s.
 
 def sortArray(arr):
-    count0=0
-    count1=0
-    count2=0
-    for i in arr:
-        if i==0:
-            count0+=1
-        elif i==1:
-            count1+=1
-        else:
-            count2+=1
-    return [0]*count0+[1]*count1+[2]*count2
+  count0=0
+  count1=0
+  count2=0
+  for i in arr:
+    if i==0:
+      count0+=1
+    elif i==1:
+      count1+=1
+    else:
+      count2+=1
+  return [0]*count0+[1]*count1+[2]*count2
 arr=[0,1,1,2,0,2,1,0,2]
-print(sortArray(arr)) 
+print(sortArray(arr))                
+
+# 29. Find the Longest Consecutive Sequence: Find the length of the longest consecutive sequence of integers. 
+
+def consecutive(arr):
+  n=len(arr)
+  arr2=[]
+  count=0
+  k=0
+  for i in range(n):
+    if k+1==arr[i]:
+      count+=1
+      k+=1
+      arr2.append(count)
+    else:
+      k=arr[i-1]
+  return max(arr2)
+arr=[1,2,3,5,6,7,8]    
+print(consecutive(arr))           
+
+# 30. Product of Array Except Self: Given an array, return an array where each element is the product of all other elements except itself, without using division.
+
+def prodArr(arr):
+  n=len(arr)
+  res=[1]*n
+  prefix=1
+  for i in range(n):
+    res[i]=prefix
+    prefix*=arr[i]
+  postfix=1
+  for i in range(n-1,-1,-1):
+    res[i]*=postfix
+    postfix*=arr[i]  
+  return res  
+arr=[1,2,3,4]
+print(prodArr(arr))  
+
+# 31. Find Equilibrium Index
+
+def equiIndex(arr):
+  total=sum(arr)
+  n=len(arr)
+  left=0
+  for i in range(n):
+    total-=arr[i]
+    if left==total:
+      return i  
+    left+=arr[i]
+  return -1    
+arr=[1,2,3,4,6,5,5]
+print(equiIndex(arr))
+
+# 32. Find Maximum Product Pair
+
+def maxPair(arr):
+  n=len(arr)
+  max1=0
+  max2=0
+  for i in range(n):
+    if (arr[i]>max1):
+      max2 = max1
+      max1 = arr[i]
+    elif (arr[i]>max2 and arr[i]!=max1):
+      max2 = arr[i]
+  return [max1,max2]
+arr=[1,7,3,2,4,8,5,6]
+print(maxPair(arr))
+
+# 33. Find Maximum Difference (j > i)
+def maxDiff(arr):
+  n=len(arr)
+  min=arr[0]
+  maxdiff=0
+  for i in range(n):
+    if arr[i]>min:
+      maxdiff=max(maxdiff,arr[i]-min)
+    else:
+      min=arr[i]
+  return maxdiff
+arr=[7,9,5,6,3,2]
+print(maxDiff(arr))
